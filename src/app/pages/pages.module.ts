@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 
 import { SharedModule } from '../shared/shared.module';
-import { AppRoutingModule } from '../app-routin.module';
+import { AppRoutingModule } from '../app-routing.module';
 
 import { ProgressComponent } from './progress/progress.component';
 import { Graph1Component } from './graph1/graph1.component';

@@ -7,10 +7,10 @@ import { Graph1Component } from './graph1/graph1.component';
 
 const routes: Routes = [
   {
-    path: '',
+    path: 'dashboard',
     component: PagesComponent,
     children: [
-      { path: 'dashboard', component: DashboardComponent, data: { titulo: 'Dashboard' } },
+      { path: '', component: DashboardComponent, data: { titulo: 'Dashboard' } },
       { path: 'graph1', component: Graph1Component, data: { titulo: 'Graphic' } },
       { path: 'progress', component: ProgressComponent, data: { titulo: 'ProgressBar' } },
       ],
