@@ -11,6 +11,7 @@ import { Graph1Component } from './graph1/graph1.component';
 import { PagesComponent } from './pages.component';
 import { DashboardComponent } from '../shared/dashboard/dashboard.component';
 import { RouterModule } from '@angular/router';
+import { AccountSettingsComponent } from './account-settings/account-settings.component';
 
 
 
@@ -20,6 +21,14 @@ import { RouterModule } from '@angular/router';
     DashboardComponent,
     ProgressComponent,
     Graph1Component,
+    AccountSettingsComponent,
+  ],
+  exports: [
+    PagesComponent,
+    DashboardComponent,
+    ProgressComponent,
+    Graph1Component,
+    AccountSettingsComponent,
   ],
   imports: [
     CommonModule,
