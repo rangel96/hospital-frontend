@@ -16,7 +16,7 @@
             <li><a href="javascript:void()">Inbox</a></li>
             <li><a routerLink="account-settings">Account Setting</a></li>
             <li><a routerLink="/login">Exit</a></li>
-            <li><a routerLink="/login">Logout</a></li>
+            <li><a class="pointer" routerLink="/login" (click)="auth.signOut()">Logout</a></li>
           </ul>
         </li>
         <li class="nav-devider"></li>
@@ -28,7 +28,11 @@
             <span class="hide-menu">{{ menu.title }} <span class="label label-rouded label-themecolor pull-right">{{ menu.submenu.length }}</span></span>
           </a>
           <ul aria-expanded="false" class="collapse">
-            <li *ngFor="let submenu of menu.submenu"><a [routerLink]="submenu.url">{{ submenu.title }} </a></li>
+            <li *ngFor="let submenu of menu.submenu">
+              <a [routerLink]="submenu.url"
+                 routerLinkActive="active"
+                 [routerLinkActiveOptions]="{ exact: true }">{{ submenu.title }} </a>
+            </li>
           </ul>
         </li>
 

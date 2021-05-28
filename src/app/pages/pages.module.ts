@@ -9,9 +9,11 @@ import { ComponentsModule } from '../components/components.module';
 import { ProgressComponent } from './progress/progress.component';
 import { Graph1Component } from './graph1/graph1.component';
 import { PagesComponent } from './pages.component';
-import { DashboardComponent } from '../shared/dashboard/dashboard.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 import { RouterModule } from '@angular/router';
 import { AccountSettingsComponent } from './account-settings/account-settings.component';
+import { PromisesComponent } from './promises/promises.component';
+import { RxjsComponent } from './rxjs/rxjs.component';
 
 
 
@@ -22,6 +24,8 @@ import { AccountSettingsComponent } from './account-settings/account-settings.co
     ProgressComponent,
     Graph1Component,
     AccountSettingsComponent,
+    PromisesComponent,
+    RxjsComponent,
   ],
   exports: [
     PagesComponent,
