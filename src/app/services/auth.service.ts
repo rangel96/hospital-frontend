@@ -15,6 +15,7 @@ const baseUrl = environment.baseUrl;
 })
 export class AuthService {
   public auth2: any;
+  public usuario: UsuarioI;
 
   constructor(private http: HttpClient,
               private router: Router,
@@ -61,10 +62,14 @@ export class AuthService {
     const headers = { 'x-token': token };
 
     return this.http.get(url, { headers })
-      .pipe(tap(
-      (resp: any) => localStorage.setItem('token', resp.token)
+      .pipe(map(
+      (resp: any) => {
+        const { nombre, email, password, img, google, role, uid } = resp.data;
+        this.usuario = new UsuarioI(nombre, email, password, img, google, role, uid);
+        localStorage.setItem('token', resp.token);
+        return resp.status;
+      }
     ),
-      map( (resp) => resp.status),
       catchError( () => of(false))
     );
   }

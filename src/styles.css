@@ -10,3 +10,16 @@
 #themecolors .selector .pointer {
   cursor:pointer;
 }
+
+#google-btn, .center-h {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin: 0 auto;
+}
+
+.img-new {
+  height: 50%;
+  width: 50%;
+}
