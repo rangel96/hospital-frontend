@@ -1,14 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import Swal from 'sweetalert2';
-import { UsuarioService } from '../../services/usuario.service';
-import { UsuarioI } from '../../models/usuario.model';
-import { UploadFilesService } from '../../services/upload-files.service';
+import { UsuarioService } from '../../../services/usuario.service';
+import { UsuarioI } from '../../../models/usuario.model';
+import { UploadFilesService } from '../../../services/upload-files.service';
 
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
-  styleUrls: ['./profile.component.css']
+  styles: [
+  ]
 })
 export class ProfileComponent implements OnInit {
 

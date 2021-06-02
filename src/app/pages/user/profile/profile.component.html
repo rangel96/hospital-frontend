@@ -56,9 +56,9 @@
       <div class="card-body">
         <h4 class="card-title">Avatar</h4>
         <h6 class="card-subtitle">Change your photo profile</h6>
-        <img *ngIf="!imgTemp" class="img-new center-h mb-3"  [src]="usuario.image" alt="olg image">
-        <img *ngIf="imgTemp" class="img-new center-h mb-3"  [src]="imgTemp" alt="new image">
-        <input #img type="file" (change)="showImage($event.target.files[0])" accept="image/*">
+        <img *ngIf="!imgTemp" class="img-new center-h mb-3"  [src]="usuario.image" alt="Current profile photo">
+        <img *ngIf="imgTemp" class="img-new center-h mb-3"  [src]="imgTemp" alt="New profile photo">
+        <input type="file" (change)="showImage($event.target.files[0])" accept="image/*">
         <br>
         <br>
         <div *ngIf="imgUpload">

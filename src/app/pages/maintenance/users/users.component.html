@@ -1,0 +1,83 @@
+<div class="row animated fadeIn fast">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-body">
+
+        <input #term (keyup)="search(term.value)" type="text" class="form-control" placeholder="Search users">
+        <!--<button class="btn btn-danger">Limpiar</button>-->
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="!users" class="row animated fadeIn fast">
+  <div class="col-12">
+    <div class="alert alert-warning text-center" role="alert">
+      <h3 class="alert-heading">Loading...</h3>
+      <i class="fa fa-spin fa-refresh fa-3x mb-3"></i>
+      <p>Wait a minute</p>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="users" class="row animated fadeIn fast">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-body">
+        <h4 class="card-title">Users ({{ total }})</h4>
+        <h6 class="card-subtitle">Registered users</h6>
+
+        <div class="table-responsive">
+          <table class="table table-bordered">
+            <thead>
+            <tr>
+              <th class="w100">Avatar</th>
+              <th>Email</th>
+              <th>Name</th>
+              <th class="role">Role</th>
+              <th class="w100">Auth</th>
+              <th class="text-nowrap w100">Action</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let user of users">
+              <td class="center-h">
+                <img [src]="user.image" alt="Profile photo" class="avatar" (click)="showModal(user.img, user.uid)">
+              </td>
+              <td>{{ user.email }}</td>
+              <td>{{ user.nombre }}</td>
+              <td>
+<!--                {{ user.role }}-->
+                <select class="form-control" [(ngModel)]="user.role" (change)="changeRole(user)">
+                  <option value="USER_ROLE">User</option>
+                  <option value="ADMIN_ROLE">Admin</option>
+                </select>
+              </td>
+              <td class="text-center">
+                <span *ngIf="!user.google" class="label label-info">Local</span>
+                <span *ngIf="user.google" class="label label-danger">Google</span>
+              </td>
+              <td class="text-center">
+                <a [routerLink]="['user', user.uid]" data-toggle="tooltip" data-original-title="Edit" >
+                  <i class="fa fa-pencil text-inverse m-r-10"></i>
+                </a>
+                <a (click)="deleteUsuario(user.uid)" data-toggle="tooltip" data-original-title="Delete">
+                  <i class="fa fa-trash text-danger"></i>
+                </a>
+              </td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div *ngIf="!term.value">
+          <button [disabled]="term.value" (click)="changePage(-5)" class="btn btn-primary">Previous</button>
+          &nbsp;
+          <button [disabled]="term.value" (click)="changePage(5)" class="btn btn-primary">Next</button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>

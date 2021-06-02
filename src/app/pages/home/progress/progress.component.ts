@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-progress',
   templateUrl: './progress.component.html',
-  styleUrls: ['../../../assets/css/pages/progressbar-page.css']
+  styleUrls: ['../../../../assets/css/pages/progressbar-page.css']
 })
 export class ProgressComponent {
 

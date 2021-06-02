@@ -1,0 +1,26 @@
+<div id="responsive-modal"
+     class="modal fade show animated fadeIn fast"
+     [class.d-none]="modalSvc.modal"
+     tabindex="-1" role="dialog"
+     aria-labelledby="myModalLabel"
+     style="display: block;
+     padding-right: 17px;">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Upload profile photo</h4>
+        <button (click)="cancel()" type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+      </div>
+      <div class="modal-body">
+        <h6 class="card-subtitle">Change your photo profile</h6>
+        <img *ngIf="!imgTemp" class="img-new center-h mb-3"  [src]="modalSvc.img" alt="Current profile photo">
+        <img *ngIf="imgTemp" class="img-new center-h mb-3"  [src]="imgTemp" alt="New profile photo">
+        <input type="file" (change)="showImage($event.target.files[0])" accept="image/*">
+      </div>
+      <div class="modal-footer">
+        <button (click)="cancel()" type="button" class="btn btn-default waves-effect" data-dismiss="modal">Close</button>
+        <button (click)="uploadImg()" type="button" class="btn btn-danger waves-effect waves-light" [disabled]="!imgUpload">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>

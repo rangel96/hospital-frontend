@@ -1,14 +1,15 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { RxjsComponent } from './rxjs/rxjs.component';
+import { RxjsComponent } from './home/rxjs/rxjs.component';
 import { AuthGuard } from '../guards/auth.guard';
 import { PagesComponent } from './pages.component';
-import { AccountSettingsComponent } from './account-settings/account-settings.component';
-import { Graph1Component } from './graph1/graph1.component';
-import { ProgressComponent } from './progress/progress.component';
-import { PromisesComponent } from './promises/promises.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
-import { ProfileComponent } from './profile/profile.component';
+import { AccountSettingsComponent } from './user/account-settings/account-settings.component';
+import { Graph1Component } from './home/graph1/graph1.component';
+import { ProgressComponent } from './home/progress/progress.component';
+import { PromisesComponent } from './home/promises/promises.component';
+import { DashboardComponent } from './home/dashboard/dashboard.component';
+import { ProfileComponent } from './user/profile/profile.component';
+import { UsersComponent } from './maintenance/users/users.component';
 
 
 const routes: Routes = [
@@ -17,13 +18,22 @@ const routes: Routes = [
     canActivate: [AuthGuard],
     component: PagesComponent,
     children: [
-      { path: '', component: DashboardComponent, data: { titulo: 'Dashboard' } },
-      { path: 'graph1', component: Graph1Component, data: { titulo: 'Graphic' } },
-      { path: 'progress', component: ProgressComponent, data: { titulo: 'ProgressBar' } },
+      // Users routes
+      { path: 'profile', component: ProfileComponent, data: { titulo: 'Profile' } },
       { path: 'account-settings', component: AccountSettingsComponent, data: { titulo: 'AcountSettings' } },
+
+      // Home routes
+      { path: '', component: DashboardComponent, data: { titulo: 'Dashboard' } },
+      { path: 'progress', component: ProgressComponent, data: { titulo: 'ProgressBar' } },
+      { path: 'graph1', component: Graph1Component, data: { titulo: 'Graphic' } },
       { path: 'promises', component: PromisesComponent, data: { titulo: 'Promises' } },
       { path: 'rxjs', component: RxjsComponent, data: { titulo: 'RXJS' } },
-      { path: 'profile', component: ProfileComponent, data: { titulo: 'Profile' } },
+
+      // Maintenance routes
+      { path: 'users', component: UsersComponent, data: { titulo: 'Users' } },
+      { path: 'hospitals', component: UsersComponent, data: { titulo: 'Hospitals' } },
+      { path: 'doctors', component: UsersComponent, data: { titulo: 'Doctors' } },
+
       ],
   },
 ];
