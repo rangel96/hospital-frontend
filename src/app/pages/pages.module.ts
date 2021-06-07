@@ -19,6 +19,10 @@ import { Graph1Component } from './home/graph1/graph1.component';
 import { PromisesComponent } from './home/promises/promises.component';
 
 import { UsersComponent } from './maintenance/users/users.component';
+import { HospitalsComponent } from './maintenance/hospitals/hospitals.component';
+import { DoctorsComponent } from './maintenance/doctors/doctors.component';
+import { PipesModule } from '../pipe/pipes.module';
+import { DoctorComponent } from './maintenance/doctors/doctor/doctor.component';
 
 
 
@@ -33,6 +37,9 @@ import { UsersComponent } from './maintenance/users/users.component';
     RxjsComponent,
     ProfileComponent,
     UsersComponent,
+    HospitalsComponent,
+    DoctorsComponent,
+    DoctorComponent,
   ],
   exports: [
     PagesComponent,
@@ -46,13 +53,14 @@ import { UsersComponent } from './maintenance/users/users.component';
     UsersComponent,
   ],
   imports: [
-      CommonModule,
-      SharedModule,
-      HttpClientModule,
-      FormsModule,
-      ComponentsModule,
-      RouterModule,
-      ReactiveFormsModule,
+    CommonModule,
+    SharedModule,
+    HttpClientModule,
+    FormsModule,
+    ComponentsModule,
+    RouterModule,
+    ReactiveFormsModule,
+    PipesModule,
   ]
 })
 export class PagesModule { }

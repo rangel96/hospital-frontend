@@ -106,7 +106,7 @@ export class LoginComponent implements OnInit {
       icon: 'success',
       title: 'Success!',
       showConfirmButton: false,
-      timer: 1000
+      timer: 800
     });
     this.router.navigateByUrl('/dashboard');
   }

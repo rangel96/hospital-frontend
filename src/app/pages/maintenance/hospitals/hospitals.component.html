@@ -1,0 +1,78 @@
+<div class="row animated fadeIn fast">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-body">
+
+        <input #term (keyup)="search(term.value)" type="text" class="form-control" placeholder="Search hospitals">
+        <!--<button class="btn btn-danger">Limpiar</button>-->
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="!hospitals" class="row animated fadeIn fast">
+  <div class="col-12">
+    <div class="alert alert-warning text-center" role="alert">
+      <h3 class="alert-heading">Loading...</h3>
+      <i class="fa fa-spin fa-refresh fa-3x mb-3"></i>
+      <p>Wait a minute</p>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="hospitals" class="row animated fadeIn fast">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-body">
+
+        <div class="row">
+          <div class="col-7">
+            <h4 class="card-title">Hospitals ({{ total }})</h4>
+            <h6 class="card-subtitle">Registered hospitals</h6>
+          </div>
+          <div class="col text-right">
+            <button (click)="createHospital()" class="btn btn-primary"><i class="fa fa-hospital-o"></i> Create Hospital</button>
+          </div>
+        </div>
+
+        <div class="table-responsive">
+          <table class="table table-bordered">
+            <thead>
+            <tr>
+              <th class="w100">Avatar</th>
+              <th>Usuario</th>
+              <th>Name</th>
+              <th class="text-nowrap w100">Action</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let hospital of hospitals">
+              <td class="center-h">
+                <img [src]="hospital.img | image:'hospitales'" [alt]="hospital.nombre" class="avatar" (click)="showModal(hospital.img, hospital.hid)">
+              </td>
+              <td>{{ hospital.usuario.nombre || 'User deleted' }}</td>
+              <td><input #name type="text" class="form-control" placeholder="Name of hospital" [value]="hospital.nombre"></td>
+              <td class="text-center">
+                <a (click)="updateHospital(hospital.hid, name.value)" data-toggle="tooltip" data-original-title="Edit" >
+                  <i class="fa fa-pencil text-inverse m-r-10"></i>
+                </a>
+                <a (click)="deleteHospital(hospital.hid)" data-toggle="tooltip" data-original-title="Delete">
+                  <i class="fa fa-trash text-danger"></i>
+                </a>
+              </td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div *ngIf="!term.value">
+          <button [disabled]="term.value" (click)="changePage(-5)" class="btn btn-primary">Previous</button>
+          &nbsp;
+          <button [disabled]="term.value" (click)="changePage(5)" class="btn btn-primary">Next</button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>

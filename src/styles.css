@@ -41,3 +41,8 @@
   border-radius: 100%;
   width: 60px;
 }
+
+.center-v {
+  align-items: center;
+  margin: auto;
+}

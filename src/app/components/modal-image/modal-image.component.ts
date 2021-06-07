@@ -1,8 +1,7 @@
-import { Component, Host, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { UploadFilesService } from '../../services/upload-files.service';
 import Swal from 'sweetalert2';
 import { ModalImageService } from '../../services/modal-image.service';
-import { UsersComponent } from 'src/app/pages/maintenance/users/users.component';
 
 @Component({
   selector: 'app-modal-image',
@@ -16,7 +15,6 @@ export class ModalImageComponent implements OnInit {
   imgTemp: string | ArrayBuffer;
 
   constructor(public modalSvc: ModalImageService,
-              /*@Host() private usersC: UsersComponent,*/
               private uploadFile: UploadFilesService) { }
 
   ngOnInit(): void {

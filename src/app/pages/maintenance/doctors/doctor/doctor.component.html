@@ -1,0 +1,62 @@
+<div *ngIf="!hospitals" class="alert alert-warning text-center" role="alert">
+  <h3 class="alert-heading">Loading...</h3>
+  <i class="fa fa-spin fa-refresh fa-3x mb-3"></i>
+  <p>Please, wait a minute</p>
+</div>
+
+<div *ngIf="hospitals" class="row">
+  <div class="col-lg-6">
+    <div class="card">
+      <div class="card-body">
+        <h4 class="card-title">Doctor</h4>
+        <h6 class="card-subtitle">Create or update a doctor</h6>
+        <form class="form p-t-20" [formGroup]="doctorForm">
+          <div class="form-group">
+            <label for="img">Photo profile</label>
+            <div class="input-group center-h">
+              <img [src]="img | image: 'medicos'" class="img-responsive" alt="..." id="img" (click)="showModal()">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="exampleInputuname2">Doctor Name</label>
+            <div class="input-group">
+              <input type="text" class="form-control" id="exampleInputuname2" placeholder="Username" formControlName="nombre">
+              <div class="input-group-addon"><i class="ti-user"></i></div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="hid">Hospital</label>
+            <div class="input-group">
+              <select class="form-control" id="hid" formControlName="hid">
+                <option value="">Choose a hospital</option>
+                <option *ngFor="let hospital of hospitals" [value]="hospital.hid">{{ hospital.nombre }}</option>
+              </select>
+              <div class="input-group-addon"><i class="fa fa-hospital-o"></i></div>
+            </div>
+          </div>
+          <div class="text-left">
+            <button *ngIf="mid" (click)="updateDoctor()" [disabled]="doctorForm.invalid" type="submit" class="btn btn-success waves-effect waves-light m-r-10">
+              <i class="fa fa-save"></i> Save
+            </button>
+            <button *ngIf="!mid" (click)="saveDoctor()" [disabled]="doctorForm.invalid" type="submit" class="btn btn-success waves-effect waves-light m-r-10">
+              <i class="fa fa-save"></i> Save
+            </button>
+            <button (click)="cancel()" type="submit" class="btn btn-danger waves-effect waves-light">
+              <i class="fa fa-times"></i> Cancel
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="hospital" class="col-lg-6 animated fadeIn fast">
+    <div class="card">
+      <div class="card-body">
+        <h4 class="card-title">Hospital</h4>
+        <h6 class="card-subtitle">{{ hospital.nombre }}</h6>
+        <img [src]="hospital.img | image: 'hospitales'" class="img-thumbnail center-h" alt="...">
+      </div>
+    </div>
+  </div>
+</div>

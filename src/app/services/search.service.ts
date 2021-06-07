@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 import { UsuarioI } from '../models/usuario.model';
+import { HospitalI } from '../models/hospital.model';
 
 
 const baseUrl = environment.baseUrl;
@@ -22,12 +23,12 @@ export class SearchService {
     };
   }
 
-  private transform(type: 'usuarios' | 'hospitales' | 'medicos', result: any): UsuarioI[] {
+  private transform(type: 'usuarios' | 'hospitales' | 'medicos', result: any): UsuarioI[] | HospitalI[] {
 /*    return result.map(
       user => new UsuarioI(user.nombre, user.email, user.password, user.img, user.google, user.role, user.uid)
     );*/
 
-    switch (type) {
+    /*switch (type) {
       case 'usuarios': {
         return result.map(
           user => new UsuarioI(user.nombre, user.email, user.password, user.img, user.google, user.role, user.uid)
@@ -45,7 +46,13 @@ export class SearchService {
         // Statements
         break;
       }
-    }
+    }*/
+
+    return (type === 'usuarios')
+      ? result.map(
+        user => new UsuarioI(user.nombre, user.email, user.password, user.img, user.google, user.role, user.uid)
+      )
+      : result;
   }
 
   search(type: 'usuarios' | 'hospitales' | 'medicos', words: string): Observable<any> {

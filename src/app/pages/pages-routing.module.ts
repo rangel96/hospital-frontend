@@ -10,6 +10,9 @@ import { PromisesComponent } from './home/promises/promises.component';
 import { DashboardComponent } from './home/dashboard/dashboard.component';
 import { ProfileComponent } from './user/profile/profile.component';
 import { UsersComponent } from './maintenance/users/users.component';
+import { HospitalsComponent } from './maintenance/hospitals/hospitals.component';
+import { DoctorsComponent } from './maintenance/doctors/doctors.component';
+import { DoctorComponent } from './maintenance/doctors/doctor/doctor.component';
 
 
 const routes: Routes = [
@@ -31,8 +34,10 @@ const routes: Routes = [
 
       // Maintenance routes
       { path: 'users', component: UsersComponent, data: { titulo: 'Users' } },
-      { path: 'hospitals', component: UsersComponent, data: { titulo: 'Hospitals' } },
-      { path: 'doctors', component: UsersComponent, data: { titulo: 'Doctors' } },
+      { path: 'hospitals', component: HospitalsComponent, data: { titulo: 'Hospitals' } },
+      { path: 'doctors', component: DoctorsComponent, data: { titulo: 'Doctors' } },
+      { path: 'doctor/:id', component: DoctorComponent, data: { titulo: 'Doctor' } },
+      { path: 'doctor', component: DoctorComponent, data: { titulo: 'Doctor' } },
 
       ],
   },

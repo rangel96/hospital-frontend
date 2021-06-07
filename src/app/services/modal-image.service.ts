@@ -1,4 +1,4 @@
-import { Host, Injectable } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
 
 
@@ -10,7 +10,7 @@ const baseUrl = environment.baseUrl;
 export class ModalImageService {
 
   // tslint:disable-next-line:variable-name
-  private _hideModal = true;
+  public _hideModal = true;
   public type: 'usuarios' | 'hospitales' | 'medicos';
   public img;
   public id;
@@ -23,9 +23,9 @@ export class ModalImageService {
   }
 
   showModal(type: 'usuarios' | 'hospitales' | 'medicos', img: string, id: string): void {
+    this._hideModal = false;
     this.type = type;
     this.id = id;
-    this._hideModal = false;
 
     (img.includes('https'))
       ? this.img = img
