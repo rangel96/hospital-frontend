@@ -22,7 +22,7 @@
         <li class="nav-devider"></li>
         <li class="nav-small-cap">PERSONAL</li>
 
-        <li *ngFor="let menu of menuItems">
+        <li *ngFor="let menu of sidebarSvc.menu">
           <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false">
             <i [class]="menu.icon"></i>
             <span class="hide-menu">{{ menu.title }} <span class="label label-rouded label-themecolor pull-right">{{ menu.submenu.length }}</span></span>

@@ -60,7 +60,6 @@ export class DoctorComponent implements OnInit {
           if (!resp.status) {
               return this.messageError(resp.msg);
           }
-          console.log(resp.data);
           const { nombre, hospital: {_id}, img } = resp.data;
           this.img = img;
           this.doctorForm.setValue({ nombre, hid: _id });
@@ -97,6 +96,7 @@ export class DoctorComponent implements OnInit {
     (this.img)
       ? this.modalSvc.showModal('medicos', this.img, this.mid)
       : this.modalSvc.showModal('medicos', this.img = 'no-img', this.mid);
+    this.modalSvc.changeImg.pipe(delay(40)).subscribe(() => this.loadDoctor());
   }
 
   messageError(message: string): void {

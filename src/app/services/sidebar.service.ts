@@ -6,7 +6,13 @@ import { MenuItems } from '../models/menu-items';
 })
 export class SidebarService {
 
-  menu: MenuItems[] = [
+  menu: MenuItems[] = [];
+
+  loadMenu(): void {
+    this.menu = JSON.parse(localStorage.getItem('menu')) || [];
+  }
+
+  /*menu: MenuItems[] = [
     {
       title: 'Dashboard',
       icon: 'mdi mdi-gauge',
@@ -27,7 +33,7 @@ export class SidebarService {
         { title: 'Doctors', url: 'doctors'  },
       ],
     },
-  ];
+  ];*/
 
 
   constructor() { }

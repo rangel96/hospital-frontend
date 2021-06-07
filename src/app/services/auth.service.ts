@@ -5,6 +5,7 @@ import { environment } from 'src/environments/environment';
 import { catchError, map, tap } from 'rxjs/operators';
 import { Observable, of } from 'rxjs';
 import { UsuarioI } from '../models/usuario.model';
+import { MenuItems } from '../models/menu-items';
 
 
 declare const gapi: any;
@@ -19,21 +20,27 @@ export class AuthService {
 
   constructor(private http: HttpClient,
               private router: Router,
-              private ngZone: NgZone) {
+              private ngZone: NgZone)
+  {
     this.googleInitiate();
+  }
+
+  private saveLocalStorage(token: string, menu: MenuItems): void {
+    localStorage.setItem('token', token);
+    localStorage.setItem('menu', JSON.stringify(menu));
   }
 
   register(body: UsuarioI): Observable<any> {
     const url = `${baseUrl}/usuarios`;
     return this.http.post(url, body).pipe(tap(
-      (resp) => localStorage.setItem('token', resp.token)
+      (resp) => this.saveLocalStorage(resp.token, resp.menu)
     ));
   }
 
   login(body: UsuarioI): Observable<any> {
     const url = `${baseUrl}/auth/login`;
     return this.http.post(url, body).pipe(tap(
-      (resp) => localStorage.setItem('token', resp.token)
+      (resp) => this.saveLocalStorage(resp.token, resp.menu)
     ));
   }
 
@@ -52,7 +59,7 @@ export class AuthService {
   loginGoogle(token: string): Observable<any> {
     const url = `${baseUrl}/auth/google`;
     return this.http.post(url, { token }).pipe(tap(
-      (resp) => localStorage.setItem('token', resp.token)
+      (resp) => this.saveLocalStorage(resp.token, resp.menu)
     ));
   }
 
@@ -66,7 +73,7 @@ export class AuthService {
       (resp: any) => {
         const { nombre, email, password, img, google, role, uid } = resp.data;
         this.usuario = new UsuarioI(nombre, email, password, img, google, role, uid);
-        localStorage.setItem('token', resp.token);
+        this.saveLocalStorage(resp.token, resp.menu);
         return resp.status;
       }
     ),

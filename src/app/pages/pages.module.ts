@@ -23,6 +23,7 @@ import { HospitalsComponent } from './maintenance/hospitals/hospitals.component'
 import { DoctorsComponent } from './maintenance/doctors/doctors.component';
 import { PipesModule } from '../pipe/pipes.module';
 import { DoctorComponent } from './maintenance/doctors/doctor/doctor.component';
+import { SearchComponent } from './search/search.component';
 
 
 
@@ -40,6 +41,7 @@ import { DoctorComponent } from './maintenance/doctors/doctor/doctor.component';
     HospitalsComponent,
     DoctorsComponent,
     DoctorComponent,
+    SearchComponent,
   ],
   exports: [
     PagesComponent,

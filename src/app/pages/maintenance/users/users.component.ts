@@ -5,6 +5,7 @@ import { UsuariosService } from '../../../services/usuarios.service';
 import { SearchService } from '../../../services/search.service';
 import { UsuarioService } from '../../../services/usuario.service';
 import { ModalImageService } from '../../../services/modal-image.service';
+import { delay } from 'rxjs/operators';
 
 @Component({
   selector: 'app-users',
@@ -123,5 +124,6 @@ export class UsersComponent implements OnInit {
     (img)
       ? this.modalSvc.showModal('usuarios', img, id)
       : this.modalSvc.showModal('usuarios', img = 'no-img', id);
+    this.modalSvc.changeImg.pipe(delay(30)).subscribe(() => this.loadData());
   }
 }

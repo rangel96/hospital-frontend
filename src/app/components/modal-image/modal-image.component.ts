@@ -22,7 +22,6 @@ export class ModalImageComponent implements OnInit {
 
   showImage(file: File): void {
     this.imgUpload = file;
-    // console.log(file);
 
     if (!file) { return this.imgTemp = null; }
 
@@ -33,8 +32,8 @@ export class ModalImageComponent implements OnInit {
 
   uploadImg(): void {
     this.uploadFile.updateImage(this.imgUpload, this.modalSvc.type, this.modalSvc.id)
-      .then(img => {
-        // this.usersC.loadData();
+      .then( () => {
+        this.modalSvc.changeImg.emit(false);
         this.modalSvc.hideModal();
       }).catch(err => this.messageError(err.error));
   }

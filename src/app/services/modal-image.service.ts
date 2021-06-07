@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { EventEmitter, Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
 
 
@@ -10,10 +10,12 @@ const baseUrl = environment.baseUrl;
 export class ModalImageService {
 
   // tslint:disable-next-line:variable-name
-  public _hideModal = true;
+  private _hideModal = true;
   public type: 'usuarios' | 'hospitales' | 'medicos';
   public img;
   public id;
+
+  public changeImg: EventEmitter<boolean> = new EventEmitter<boolean>(this._hideModal);
 
   constructor() {
   }

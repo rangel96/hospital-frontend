@@ -4,6 +4,7 @@ import { SearchService } from '../../../services/search.service';
 import { ModalImageService } from '../../../services/modal-image.service';
 import { HospitalsService } from '../../../services/hospitals.service';
 import { HospitalI } from '../../../models/hospital.model';
+import { delay } from 'rxjs/operators';
 
 @Component({
   selector: 'app-hospitals',
@@ -140,6 +141,7 @@ export class HospitalsComponent implements OnInit {
     (img)
       ? this.modalSvc.showModal('hospitales', img, id)
       : this.modalSvc.showModal('hospitales', img = 'no-img', id);
+    this.modalSvc.changeImg.pipe(delay(30)).subscribe(() => this.loadData());
   }
 
 }

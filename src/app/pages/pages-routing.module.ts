@@ -13,6 +13,8 @@ import { UsersComponent } from './maintenance/users/users.component';
 import { HospitalsComponent } from './maintenance/hospitals/hospitals.component';
 import { DoctorsComponent } from './maintenance/doctors/doctors.component';
 import { DoctorComponent } from './maintenance/doctors/doctor/doctor.component';
+import { SearchComponent } from './search/search.component';
+import { RoleGuard } from '../guards/role.guard';
 
 
 const routes: Routes = [
@@ -33,12 +35,14 @@ const routes: Routes = [
       { path: 'rxjs', component: RxjsComponent, data: { titulo: 'RXJS' } },
 
       // Maintenance routes
-      { path: 'users', component: UsersComponent, data: { titulo: 'Users' } },
+      { path: 'users', canActivate: [RoleGuard], component: UsersComponent, data: { titulo: 'Users' } },
       { path: 'hospitals', component: HospitalsComponent, data: { titulo: 'Hospitals' } },
       { path: 'doctors', component: DoctorsComponent, data: { titulo: 'Doctors' } },
       { path: 'doctor/:id', component: DoctorComponent, data: { titulo: 'Doctor' } },
       { path: 'doctor', component: DoctorComponent, data: { titulo: 'Doctor' } },
 
+      // Search
+      { path: 'search/:term', component: SearchComponent, data: { titulo: 'Search' } },
       ],
   },
 ];

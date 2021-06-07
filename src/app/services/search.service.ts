@@ -66,4 +66,9 @@ export class SearchService {
       ));
   }
 
+  searchGlobal(words: string): Observable<any> {
+    const url = `${baseUrl}/busquedas/todo/${words}`;
+    return this.http.get(url, this.headers);
+  }
+
 }

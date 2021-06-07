@@ -4,6 +4,8 @@ import { ModalImageService } from '../../../services/modal-image.service';
 import Swal from 'sweetalert2';
 import { MedicosService } from '../../../services/medicos.service';
 import { MedicoI } from '../../../models/medico.model';
+import { Observable } from 'rxjs';
+import { delay } from 'rxjs/operators';
 
 @Component({
   selector: 'app-doctors',
@@ -29,7 +31,7 @@ export class DoctorsComponent implements OnInit {
     this.loadData();
   }
 
-  public loadData(): void {
+  loadData(): void {
     this.hospitalSvc.getMedicos(this.desde, this.items).subscribe(
       resp => {
         if (!resp.status) {
@@ -112,6 +114,8 @@ export class DoctorsComponent implements OnInit {
     (img)
       ? this.modalSvc.showModal('medicos', img, id)
       : this.modalSvc.showModal('medicos', img = 'no-img', id);
+
+    this.modalSvc.changeImg.pipe(delay(40)).subscribe(() => this.loadData());
   }
 
 }
