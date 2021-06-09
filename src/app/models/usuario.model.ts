@@ -20,7 +20,7 @@ export class UsuarioI {
       return `${baseUrl}/uploads/usuarios/no-img`;
     }
 
-    if (this.img.includes('https')) {
+    if (this.img.includes('http')) {
       return this.img;
     }
 

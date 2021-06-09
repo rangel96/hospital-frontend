@@ -18,7 +18,7 @@ export class ImagePipe implements PipeTransform {
       return `${baseUrl}/uploads/${type}/no-img`;
     }
 
-    if (img.includes('https')) {
+    if (img.includes('http')) {
       return img;
     }
 
